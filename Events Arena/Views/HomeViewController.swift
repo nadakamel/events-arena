@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     
     fileprivate let presenter = HomePresenter(homeService: HomeService())
     fileprivate var types: [String] = []
-    fileprivate var events = EventsDetails()
+    var events = EventsDetails()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,19 +67,6 @@ class HomeViewController: UIViewController {
         view.addSubview(eventsTableView)
     }
     
-    func loadContentView(withTypes types: EventTypes) {
-        let host = UIHostingController(rootView: HomeView(withEventTypes: types, homeService: HomeService()))
-        guard let hostView = host.view else {
-            return
-        }
-        hostView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(hostView)
-        NSLayoutConstraint.activate([
-            hostView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            hostView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            hostView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-        ])
-    }
 }
 
 extension HomeViewController: HomeViewProtocol {

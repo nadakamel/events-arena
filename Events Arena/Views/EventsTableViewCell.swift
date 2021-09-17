@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class EventsTableViewCell: UITableViewCell {
     
@@ -63,8 +64,5 @@ class EventsTableViewCell: UITableViewCell {
         }
         titleLabel.text = event.name
     }
-    
-    
-    
     
 }

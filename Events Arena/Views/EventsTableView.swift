@@ -18,10 +18,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ArticlesTableViewCell.identifier,
-                                                 for: indexPath) as! ArticlesTableViewCell
-        cell.backgroundColor = .black
-        cell.configure(with: viewModel.popularArticles[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: EventsTableViewCell.identifier,
+                                                 for: indexPath) as! EventsTableViewCell
+        cell.configure(with: events[indexPath.row])
         return cell
     }
     
@@ -31,8 +30,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let viewController = ArticleDetailsViewController(with: viewModel.popularArticles[indexPath.row])
-        navigationController?.pushViewController(viewController, animated: false)
+//        let viewController = ArticleDetailsViewController(with: viewModel.popularArticles[indexPath.row])
+//        navigationController?.pushViewController(viewController, animated: false)
     }
     
 }
