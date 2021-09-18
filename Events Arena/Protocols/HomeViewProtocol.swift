@@ -15,4 +15,5 @@ protocol HomeViewProtocol: AnyObject {
     func setEvents(_ events: EventsDetails)
     func setEmptyEventTypes()
     func setEmptyEventsList()
+    func navigateToEventDetails(_ event: EventDetails)
 }

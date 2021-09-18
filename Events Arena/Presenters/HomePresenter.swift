@@ -64,9 +64,7 @@ class HomePresenter {
     }
     
     public func onEventSelected(details: EventDetails) {
-        debugPrint("")
-//        let viewController = EventDetailsViewController(with: details)
-//        navigationController?.pushViewController(viewController, animated: false)
+        self.homeView?.navigateToEventDetails(details)
     }
     
 }

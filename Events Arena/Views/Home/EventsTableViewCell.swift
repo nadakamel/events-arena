@@ -36,33 +36,17 @@ class EventsTableViewCell: UITableViewCell {
     
     func configure(with event: EventDetails) {
         if let mediaURL = event.cover {
+            eventImageView.kf.indicatorType = .activity
             eventImageView.kf.setImage(with: URL(string: mediaURL))
         }
         
         nameLabel.text = event.name
         
-        locationLabel.text = "Location: (\(event.latitude ?? ""), \((event.longitude ?? "")))"
+        locationLabel.text = "(\(event.latitude ?? ""), \((event.longitude ?? "")))"
     
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "EEEE, MMM d, yyyy h:mm a"
+        startDateLabel.text = "Starts on \(event.startDate?.toDate()?.toString() ?? "")"
         
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "dd MMMM, yyyy"
-    
-        var date: Date?
-        if let startDate = event.startDate {
-            date = dateFormatterGet.date(from: startDate)
-            if let _date = date {
-                startDateLabel.text = "Starts on \(dateFormatterPrint.string(from: _date))"
-            }
-        }
-        
-        if let endDate = event.endDate {
-            date = dateFormatterGet.date(from: endDate)
-            if let _date = date {
-                endDateLabel.text = "Ends on \(dateFormatterPrint.string(from: _date))"
-            }
-        }
+        endDateLabel.text = "Ends on \(event.endDate?.toDate()?.toString() ?? "")"
     }
     
 }

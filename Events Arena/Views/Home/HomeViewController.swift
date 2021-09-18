@@ -16,20 +16,18 @@ class HomeViewController: UIViewController {
     fileprivate var types = EventTypes()
     var events = EventsDetails()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
         setNavigationTitleView()
         
         presenter.attachView(false, view: self)
-        
+    
         _view.eventsTableView.delegate = self
         _view.eventsTableView.dataSource = self
         _view.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         presenter.getEventTypes()
     }
     
@@ -94,6 +92,13 @@ extension HomeViewController: HomeViewProtocol {
     func setEmptyEventsList() {
         _view.eventsTableView.backgroundView = _view.emptyTableViewLabel
         _view.eventsTableView.reloadData()
+    }
+    
+    func navigateToEventDetails(_ event: EventDetails) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EventDetailsViewController") as! EventDetailsViewController
+        viewController.event = event
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
 }
 
