@@ -32,6 +32,7 @@
 		8990C57726F3F28C00BA5415 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C57626F3F28C00BA5415 /* ParameterEncoding.swift */; };
 		8990C57926F3F2AE00BA5415 /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C57826F3F2AE00BA5415 /* URLParameterEncoding.swift */; };
 		8990C57B26F406AB00BA5415 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C57A26F406AB00BA5415 /* HomeViewProtocol.swift */; };
+		89CE586E26F62A6700C86A8A /* CacheData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE586D26F62A6700C86A8A /* CacheData.swift */; };
 		89FA7AD826F3B49800E62DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FA7AD726F3B49800E62DB4 /* AppDelegate.swift */; };
 		89FA7ADC26F3B49800E62DB4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FA7ADB26F3B49800E62DB4 /* HomeViewController.swift */; };
 		89FA7ADF26F3B49800E62DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FA7ADD26F3B49800E62DB4 /* Main.storyboard */; };
@@ -86,6 +87,7 @@
 		8990C57626F3F28C00BA5415 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
 		8990C57826F3F2AE00BA5415 /* URLParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoding.swift; sourceTree = "<group>"; };
 		8990C57A26F406AB00BA5415 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
+		89CE586D26F62A6700C86A8A /* CacheData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheData.swift; sourceTree = "<group>"; };
 		89FA7AD426F3B49800E62DB4 /* Events Arena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Events Arena.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89FA7AD726F3B49800E62DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89FA7ADB26F3B49800E62DB4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				89FA7ADD26F3B49800E62DB4 /* Main.storyboard */,
 				89FA7AE226F3B49900E62DB4 /* LaunchScreen.storyboard */,
 				89FA7AE526F3B49900E62DB4 /* Info.plist */,
+				89CE586D26F62A6700C86A8A /* CacheData.swift */,
 			);
 			path = "Events Arena";
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				89FA7AD826F3B49800E62DB4 /* AppDelegate.swift in Sources */,
 				8990C57026F3F21A00BA5415 /* HTTPMethod.swift in Sources */,
 				8990C57B26F406AB00BA5415 /* HomeViewProtocol.swift in Sources */,
+				89CE586E26F62A6700C86A8A /* CacheData.swift in Sources */,
 				8990C57726F3F28C00BA5415 /* ParameterEncoding.swift in Sources */,
 				8990C57526F3F25400BA5415 /* JSONParameterEncoder.swift in Sources */,
 				8990C55526F3EA3700BA5415 /* EventType.swift in Sources */,

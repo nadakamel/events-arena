@@ -15,8 +15,6 @@ class HomeView: UIView {
 
     weak var delegate: HomeViewDelegate?
     
-    static var segmentedControlItems: [String] = ["Sports", "Entertainments"]
-    
     fileprivate let segmentedControlView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.clear
@@ -24,13 +22,14 @@ class HomeView: UIView {
         return view
     }()
     
-    let segmentedControl: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items: segmentedControlItems)
+    var segmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: [])
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.selectedSegmentTintColor = ThemeManager.pinkColor
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
         segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        segmentedControl.apportionsSegmentWidthsByContent = true
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
         return segmentedControl
     }()
@@ -99,7 +98,11 @@ class HomeView: UIView {
     private func setupTableView() {
         eventsTableView.register(EventsTableViewCell.nib,
                                    forCellReuseIdentifier: EventsTableViewCell.identifier)
+        refreshControl.tintColor = ThemeManager.blueColor
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes:[
+                                                                NSAttributedString.Key.foregroundColor: ThemeManager.blueColor])
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        eventsTableView.refreshControl = refreshControl
         eventsTableView.addSubview(refreshControl)
     }
     

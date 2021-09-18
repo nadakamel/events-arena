@@ -32,29 +32,41 @@ class HomePresenter {
             switch result {
             case .success(let types):
                 if types.count == 0 {
-                    self?.homeView?.setEmpty()
+                    self?.homeView?.setEmptyEventTypes()
                 } else {
                     self?.homeView?.setTypes(types)
                 }
                 break
             case .failure(let error):
-                self?.homeView?.showErrorAlert(error.localizedDescription)
+                self?.homeView?.showErrorWith(message: error.localizedDescription)
                 break
             }
         })
     }
     
     func getEventListing(eventType: EventType, page: Int) {
+        self.homeView?.startLoading()
         homeService.getEventListing(eventType, page: page) { [weak self] result in
+            self?.homeView?.finishLoading()
             switch result {
-            case .success(let eventDetails):
-                self?.homeView?.setEvents(eventDetails)
+            case .success(let events):
+                if events.count == 0 {
+                    self?.homeView?.setEmptyEventsList()
+                } else {
+                    self?.homeView?.setEvents(events)
+                }
                 break
             case .failure(let error):
-                self?.homeView?.showErrorAlert(error.localizedDescription)
+                self?.homeView?.showErrorWith(message: error.localizedDescription)
                 break
             }
         }
+    }
+    
+    public func onEventSelected(details: EventDetails) {
+        debugPrint("")
+//        let viewController = EventDetailsViewController(with: details)
+//        navigationController?.pushViewController(viewController, animated: false)
     }
     
 }

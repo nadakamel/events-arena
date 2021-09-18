@@ -11,7 +11,7 @@ import SwiftUI
 class HomeViewController: UIViewController {
     
     let _view = HomeView()
-    fileprivate let presenter = HomePresenter(homeService: HomeService())
+    let presenter = HomePresenter(homeService: HomeService())
     
     fileprivate var types = EventTypes()
     var events = EventsDetails()
@@ -56,19 +56,30 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewProtocol {
     func startLoading() {
-        _view.spinner.startAnimating()
+        events = []
+        _view.eventsTableView.reloadData()
+        if(!_view.refreshControl.isRefreshing) {
+            _view.spinner.startAnimating()
+        }
     }
 
     func finishLoading() {
+        _view.refreshControl.endRefreshing()
         _view.spinner.stopAnimating()
     }
     
-    func showErrorAlert(_ message: String) {
+    func showErrorWith(message: String) {
         showAlert(title: message)
     }
     
     func setTypes(_ eventTypes: EventTypes) {
         types = eventTypes
+        for (index, element) in eventTypes.enumerated() {
+            print("Item \(index): \(element)")
+            _view.segmentedControl.insertSegment(withTitle: eventTypes[index].name, at: index, animated: false)
+            _view.segmentedControl.selectedSegmentIndex = 0
+            presenter.getEventListing(eventType: types[0], page: 1)
+        }
     }
     
     func setEvents(_ events: EventsDetails) {
@@ -76,7 +87,11 @@ extension HomeViewController: HomeViewProtocol {
         _view.eventsTableView.reloadData()
     }
     
-    func setEmpty() {
+    func setEmptyEventTypes() {
+        debugPrint("No types available!")
+    }
+    
+    func setEmptyEventsList() {
         _view.eventsTableView.backgroundView = _view.emptyTableViewLabel
         _view.eventsTableView.reloadData()
     }
@@ -84,6 +99,7 @@ extension HomeViewController: HomeViewProtocol {
 
 extension HomeViewController: HomeViewDelegate {
     func loadEvents(withTypeIndex index: Int) {
+        _view.spinner.stopAnimating()
         presenter.getEventListing(eventType: types[index], page: 1)
     }
 }

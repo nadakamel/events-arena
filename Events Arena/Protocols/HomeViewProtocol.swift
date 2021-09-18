@@ -10,8 +10,9 @@ import Foundation
 protocol HomeViewProtocol: AnyObject {
     func startLoading()
     func finishLoading()
-    func showErrorAlert(_ message: String)
-    func setEvents(_ events: EventsDetails)
+    func showErrorWith(message: String)
     func setTypes(_ eventTypes: EventTypes)
-    func setEmpty()
+    func setEvents(_ events: EventsDetails)
+    func setEmptyEventTypes()
+    func setEmptyEventsList()
 }

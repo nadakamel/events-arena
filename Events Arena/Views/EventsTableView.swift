@@ -41,8 +41,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        let viewController = ArticleDetailsViewController(with: viewModel.popularArticles[indexPath.row])
-//        navigationController?.pushViewController(viewController, animated: false)
+        presenter.onEventSelected(details: events[indexPath.section])
     }
-    
 }
