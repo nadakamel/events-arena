@@ -76,7 +76,7 @@ class HomeView: UIView {
             segmentedControl.trailingAnchor.constraint(equalTo: segmentedControlView.trailingAnchor),
             segmentedControl.bottomAnchor.constraint(equalTo: segmentedControlView.bottomAnchor),
             
-            eventsTableView.topAnchor.constraint(equalTo: segmentedControlView.bottomAnchor, constant: 16),
+            eventsTableView.topAnchor.constraint(equalTo: segmentedControlView.bottomAnchor, constant: 10),
             eventsTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             eventsTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             eventsTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16)
