@@ -12,8 +12,8 @@ protocol HomeViewProtocol: AnyObject {
     func finishLoading()
     func showErrorWith(message: String)
     func setTypes(_ eventTypes: EventTypes)
-    func setEvents(_ events: EventsDetails)
-    func setEmptyEventTypes()
+    func updateEvents(_ events: EventsDetails)
     func setEmptyEventsList()
+    func loadMoreEvents()
     func navigateToEventDetails(_ event: EventDetails)
 }

@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     
     fileprivate var types = EventTypes()
     var events = EventsDetails()
-    
+    var pageNo: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,11 +54,12 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewProtocol {
     func startLoading() {
-        events = []
-        _view.eventsTableView.reloadData()
-        if(!_view.refreshControl.isRefreshing) {
+        if(_view.refreshControl.isRefreshing) {
+            events = []
+        } else {
             _view.spinner.startAnimating()
         }
+        _view.eventsTableView.reloadData()
     }
 
     func finishLoading() {
@@ -72,26 +73,27 @@ extension HomeViewController: HomeViewProtocol {
     
     func setTypes(_ eventTypes: EventTypes) {
         types = eventTypes
-        for (index, element) in eventTypes.enumerated() {
-            print("Item \(index): \(element)")
+        events = []
+        pageNo = 1
+        for (index, _) in eventTypes.enumerated() {
             _view.segmentedControl.insertSegment(withTitle: eventTypes[index].name, at: index, animated: false)
             _view.segmentedControl.selectedSegmentIndex = 0
-            presenter.getEventListing(eventType: types[0], page: 1)
         }
+        presenter.getEventListing(eventType: types[0], page: pageNo)
     }
     
-    func setEvents(_ events: EventsDetails) {
-        self.events = events
+    func updateEvents(_ events: EventsDetails) {
+        self.events.append(contentsOf: events)
         _view.eventsTableView.reloadData()
-    }
-    
-    func setEmptyEventTypes() {
-        debugPrint("No types available!")
     }
     
     func setEmptyEventsList() {
         _view.eventsTableView.backgroundView = _view.emptyTableViewLabel
         _view.eventsTableView.reloadData()
+    }
+    
+    func loadMoreEvents() {
+        presenter.getEventListing(eventType: types[_view.segmentedControl.selectedSegmentIndex], page: pageNo)
     }
     
     func navigateToEventDetails(_ event: EventDetails) {
@@ -105,6 +107,8 @@ extension HomeViewController: HomeViewProtocol {
 extension HomeViewController: HomeViewDelegate {
     func loadEvents(withTypeIndex index: Int) {
         _view.spinner.stopAnimating()
-        presenter.getEventListing(eventType: types[index], page: 1)
+        events = []
+        pageNo = 1
+        presenter.getEventListing(eventType: types[index], page: pageNo)
     }
 }

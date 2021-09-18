@@ -31,11 +31,7 @@ class HomePresenter {
             self?.homeView?.finishLoading()
             switch result {
             case .success(let types):
-                if types.count == 0 {
-                    self?.homeView?.setEmptyEventTypes()
-                } else {
-                    self?.homeView?.setTypes(types)
-                }
+                self?.homeView?.setTypes(types)
                 break
             case .failure(let error):
                 self?.homeView?.showErrorWith(message: error.localizedDescription)
@@ -53,7 +49,7 @@ class HomePresenter {
                 if events.count == 0 {
                     self?.homeView?.setEmptyEventsList()
                 } else {
-                    self?.homeView?.setEvents(events)
+                    self?.homeView?.updateEvents(events)
                 }
                 break
             case .failure(let error):

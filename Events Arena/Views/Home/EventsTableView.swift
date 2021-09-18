@@ -27,6 +27,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return headerView
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EventsTableViewCell.identifier,
                                                  for: indexPath) as! EventsTableViewCell
@@ -35,8 +39,28 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = events.count - 1
+        if indexPath.section == lastElement {
+            if pageNo < 3 {
+                pageNo+=1
+                print("Page: \(pageNo)")
+                addActivityIndicatorToLoadMore()
+                loadMoreEvents()
+                
+            } else {
+                _view.eventsTableView.tableFooterView = nil
+            }
+        }
+    }
+
+    private func addActivityIndicatorToLoadMore() {
+        let activityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        activityIndicatorView.frame = CGRect(origin: .zero, size: CGSize(width: 40.0, height: 40.0))
+        activityIndicatorView.backgroundColor = UIColor.clear
+        activityIndicatorView.color = ThemeManager.blueColor
+        activityIndicatorView.startAnimating()
+        _view.eventsTableView.tableFooterView = activityIndicatorView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
