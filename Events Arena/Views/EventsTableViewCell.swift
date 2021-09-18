@@ -17,52 +17,52 @@ class EventsTableViewCell: UITableViewCell {
         return String(describing: self)
     }
     
-    fileprivate lazy var contentImageView: UIImageView = {
-        let contentImageView = UIImageView()
-        contentImageView.translatesAutoresizingMaskIntoConstraints = false
-        contentImageView.layer.cornerRadius = 6
-        contentImageView.layer.masksToBounds = true
-        contentImageView.contentMode = .scaleToFill
-        contentImageView.clipsToBounds = true
-        return contentImageView
-    }()
-    
-    fileprivate lazy var titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
-        titleLabel.textColor = .white
-        titleLabel.lineBreakMode = .byWordWrapping
-        titleLabel.backgroundColor = .clear
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        return titleLabel
-    }()
+    @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var startDateLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        nameLabel.textColor = ThemeManager.pinkColor
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        contentImageView.kf.cancelDownloadTask()
-        contentImageView.image = nil
+        eventImageView.kf.cancelDownloadTask()
+        eventImageView.image = nil
     }
     
     func configure(with event: EventDetails) {
-        if let urlPath = event.cover {
-            contentImageView.kf.setImage(with: URL(string: urlPath))
-        } else {
-            contentImageView.image = UIImage(named: "placeholder")
+        if let mediaURL = event.cover {
+            eventImageView.kf.setImage(with: URL(string: mediaURL))
         }
-        titleLabel.text = event.name
+        
+        nameLabel.text = event.name
+        
+        locationLabel.text = "Location: (\(event.latitude ?? ""), \((event.longitude ?? "")))"
+    
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "EEEE, MMM d, yyyy h:mm a"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "dd MMMM, yyyy"
+    
+        var date: Date?
+        if let startDate = event.startDate {
+            date = dateFormatterGet.date(from: startDate)
+            if let _date = date {
+                startDateLabel.text = "Starts on \(dateFormatterPrint.string(from: _date))"
+            }
+        }
+        
+        if let endDate = event.endDate {
+            date = dateFormatterGet.date(from: endDate)
+            if let _date = date {
+                endDateLabel.text = "Ends on \(dateFormatterPrint.string(from: _date))"
+            }
+        }
     }
     
 }

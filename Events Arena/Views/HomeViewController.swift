@@ -10,24 +10,22 @@ import SwiftUI
 
 class HomeViewController: UIViewController {
     
-    weak var eventsTableView: UITableView!
-    weak var segmentedControl: UISegmentedControl!
-    
-    fileprivate let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-    
+    let _view = HomeView()
     fileprivate let presenter = HomePresenter(homeService: HomeService())
-    fileprivate var types: [String] = []
+    
+    fileprivate var types = EventTypes()
     var events = EventsDetails()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
-        
-        addSpinnerView()
+        view.backgroundColor = UIColor.black
+        setNavigationTitleView()
         
         presenter.attachView(false, view: self)
         
-        configEventsTypeSegmentControl()
+        _view.eventsTableView.delegate = self
+        _view.eventsTableView.dataSource = self
+        _view.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,61 +33,57 @@ class HomeViewController: UIViewController {
         presenter.getEventTypes()
     }
     
-    func addSpinnerView() {
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.hidesWhenStopped = true
-        spinner.color = ThemeManager.pinkColor
-        view.addSubview(spinner)
-
-        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    override func loadView() {
+        super.loadView()
+        view = _view
     }
     
-    func configEventsTypeSegmentControl() {
-        let segmentedControl = UISegmentedControl(items: types)
-        segmentedControl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 30)
-        segmentedControl.addTarget(self, action: Selector(("segmentedControlValueChanged")), for: .valueChanged)
-        segmentedControl.selectedSegmentIndex = 0
-        view.addSubview(segmentedControl)
-        
-        NSLayoutConstraint.activate([
-            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            segmentedControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            segmentedControl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-        ])
+    fileprivate func setNavigationTitleView() {
+        let navLabel = UILabel()
+        let navTitle = NSMutableAttributedString(string: "Events", attributes:[
+                                                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24.0, weight: UIFont.Weight.bold),
+                                                    NSAttributedString.Key.foregroundColor: ThemeManager.blueColor])
+        navLabel.attributedText = navTitle
+        self.navigationItem.titleView = navLabel
     }
     
-    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        eventsTableView.reloadData()
+    func showAlert(title: String?, message: String? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
-    
-    func configEventsTableView() {
-        view.addSubview(eventsTableView)
-    }
-    
 }
 
 extension HomeViewController: HomeViewProtocol {
     func startLoading() {
-        spinner.startAnimating()
+        _view.spinner.startAnimating()
     }
 
     func finishLoading() {
-        spinner.stopAnimating()
+        _view.spinner.stopAnimating()
+    }
+    
+    func showErrorAlert(_ message: String) {
+        showAlert(title: message)
     }
     
     func setTypes(_ eventTypes: EventTypes) {
-        eventTypes.forEach { type in
-            types.append(type.name ?? "")
-        }
+        types = eventTypes
     }
     
     func setEvents(_ events: EventsDetails) {
         self.events = events
-        eventsTableView.reloadData()
+        _view.eventsTableView.reloadData()
     }
     
     func setEmpty() {
-        debugPrint("Empty list!")
+        _view.eventsTableView.backgroundView = _view.emptyTableViewLabel
+        _view.eventsTableView.reloadData()
+    }
+}
+
+extension HomeViewController: HomeViewDelegate {
+    func loadEvents(withTypeIndex index: Int) {
+        presenter.getEventListing(eventType: types[index], page: 1)
     }
 }

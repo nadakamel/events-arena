@@ -22,6 +22,7 @@ class HomeService {
                         debugPrint("[HomeService] Failure: \(error.localizedDescription)")
                         response(.failure(error))
                     }
+                    break
                 case .failure(let error):
                     debugPrint("[HomeService] Failure: \(error.localizedDescription)")
                     response(.failure(error))
@@ -31,7 +32,7 @@ class HomeService {
     }
     
     func getEventListing(_ eventType: EventType, page: Int, _ response: @escaping (Result<EventsDetails, Error>) -> Void) {
-        NetworkManagerImp().sendRequest(apiMethod: .getEventListing(eventType: eventType.id!, page: page), completion: { result in
+        NetworkManagerImp().sendRequest(apiMethod: .getEventListing(eventType: eventType.name!, page: page), completion: { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
@@ -43,6 +44,7 @@ class HomeService {
                         debugPrint("[HomeService] Failure: \(error.localizedDescription)")
                         response(.failure(error))
                     }
+                    break
                 case .failure(let error):
                     debugPrint("[HomeService] Failure: \(error.localizedDescription)")
                     response(.failure(error))

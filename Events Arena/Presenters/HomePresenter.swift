@@ -36,8 +36,9 @@ class HomePresenter {
                 } else {
                     self?.homeView?.setTypes(types)
                 }
+                break
             case .failure(let error):
-                debugPrint(error.localizedDescription)
+                self?.homeView?.showErrorAlert(error.localizedDescription)
                 break
             }
         })
@@ -48,8 +49,9 @@ class HomePresenter {
             switch result {
             case .success(let eventDetails):
                 self?.homeView?.setEvents(eventDetails)
+                break
             case .failure(let error):
-                debugPrint(error.localizedDescription)
+                self?.homeView?.showErrorAlert(error.localizedDescription)
                 break
             }
         }
