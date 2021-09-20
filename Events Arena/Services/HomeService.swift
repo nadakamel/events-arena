@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class HomeService {
     
@@ -17,9 +18,12 @@ class HomeService {
                     do {
                         let types = try JSONDecoder().decode(EventTypes.self, from: data)
                         debugPrint(types)
+                        
+                        RealmHelper.saveEventTypesToRealm(eventTypes: types)
+                        
                         response(.success(types))
                     } catch {
-                        debugPrint("[HomeService] Failure: \(error.localizedDescription)")
+                        debugPrint("[HomeService] Success catch: \(error.localizedDescription)")
                         response(.failure(error))
                     }
                     break
@@ -39,9 +43,17 @@ class HomeService {
                     do {
                         let details = try JSONDecoder().decode(EventsDetails.self, from: data)
                         debugPrint(details)
+                        
+                        var allEvents: [EventTypeDetails] = []
+                        details.forEach { event in
+                            let eventDetails = EventTypeDetails(type: eventType, event: event)
+                            allEvents.append(eventDetails)
+                        }
+                        RealmHelper.saveEventTypeDetailsToRealm(eventTypeDetails: allEvents)
+                        
                         response(.success(details))
                     } catch {
-                        debugPrint("[HomeService] Failure: \(error.localizedDescription)")
+                        debugPrint("[HomeService] Success catch: \(error.localizedDescription)")
                         response(.failure(error))
                     }
                     break
@@ -52,4 +64,5 @@ class HomeService {
             }
         })
     }
+    
 }

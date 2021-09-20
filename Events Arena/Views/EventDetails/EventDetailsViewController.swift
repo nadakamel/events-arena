@@ -39,7 +39,8 @@ class EventDetailsViewController: UIViewController {
                                     longitude: Double(longitude) ?? 0)
         mapView.centerToLocation(coordinate)
         let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: Double(latitude) ?? 0, longitude: Double(longitude) ?? 0)
+        annotation.coordinate = CLLocationCoordinate2D(latitude: Double(latitude) ?? 0,
+                                                       longitude: Double(longitude) ?? 0)
         mapView.addAnnotation(annotation)
     }
 }

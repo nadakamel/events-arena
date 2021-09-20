@@ -6,42 +6,30 @@
 //
 
 import Foundation
+import RealmSwift
+
+typealias EventTypes = [EventType]
 
 // MARK: - EventType
-struct EventType: Codable {
-    let name, id: String?
-}
+@objcMembers class EventType: Object, Decodable {
+    
+    dynamic var id: String = ""
+    dynamic var name: String?
 
-// MARK: EventType convenience initializers and mutators
-
-extension EventType {
-    init(data: Data) throws {
-        self = try JSONDecoder().decode(EventType.self, from: data)
+    override class func primaryKey() -> String? {
+        return "id"
     }
     
-    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
-        guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
-        }
-        try self.init(data: data)
+    enum CodingKeys: String, CodingKey {
+        case id, name
     }
     
-    init(fromURL url: URL) throws {
-        try self.init(data: try Data(contentsOf: url))
+    /// EventType convenience initializer
+    public required convenience init(from decoder: Decoder) throws {
+        self.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.name = try container.decode(String.self, forKey: .name)
     }
     
-    func with(name: String?? = nil, id: String?? = nil) -> EventType {
-        return EventType(
-            name: name ?? self.name,
-            id: id ?? self.id
-        )
-    }
-    
-    func jsonData() throws -> Data {
-        return try JSONEncoder().encode(self)
-    }
-    
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
-        return String(data: try self.jsonData(), encoding: encoding)
-    }
 }

@@ -52,7 +52,7 @@ class HomeView: UIView {
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16.0)
-        label.textColor = ThemeManager.pinkColor
+        label.textColor = UIColor.white
         label.text = "No events found"
         return label
     }()
@@ -128,6 +128,7 @@ class HomeView: UIView {
     }
     
     @objc private func segmentedValueChanged(_ sender: UISegmentedControl) {
+        refreshControl.endRefreshing()
         delegate?.loadEvents(withTypeIndex: segmentedControl.selectedSegmentIndex)
     }
 

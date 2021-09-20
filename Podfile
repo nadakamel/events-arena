@@ -7,6 +7,8 @@ target 'Events Arena' do
 
   # Pods for Events Arena
   pod 'Kingfisher'
+  pod 'RealmSwift'
+  pod 'ReachabilitySwift'
 
   target 'Events ArenaTests' do
     inherit! :search_paths

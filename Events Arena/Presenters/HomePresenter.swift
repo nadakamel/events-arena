@@ -25,6 +25,11 @@ class HomePresenter {
         }
     }
     
+    func loadCachedEventTypes() {
+        guard let types = RealmHelper.getRealmEventTypes() else { return }
+        homeView?.setTypes(types)
+    }
+    
     func getEventTypes() {
         self.homeView?.startLoading()        
         homeService.getEventTypes( { [weak self] result in
@@ -38,6 +43,13 @@ class HomePresenter {
                 break
             }
         })
+    }
+    
+    func loadCachedEvents(withType eventType: EventType) {
+        guard let eventsDetails = RealmHelper.getRealmEventsDetails(withType: eventType) else {
+            homeView?.setEmptyEventsList()
+            return }
+        homeView?.updateEvents(eventsDetails)
     }
     
     func getEventListing(eventType: EventType, page: Int) {

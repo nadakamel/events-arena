@@ -18,9 +18,7 @@
 		8990C55526F3EA3700BA5415 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C55426F3EA3600BA5415 /* EventType.swift */; };
 		8990C55926F3EA9F00BA5415 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C55826F3EA9F00BA5415 /* HomePresenter.swift */; };
 		8990C55C26F3EB1400BA5415 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C55B26F3EB1400BA5415 /* HomeService.swift */; };
-		8990C55E26F3ED3200BA5415 /* EventTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C55D26F3ED3200BA5415 /* EventTypes.swift */; };
 		8990C56026F3EDFD00BA5415 /* EventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C55F26F3EDFD00BA5415 /* EventDetails.swift */; };
-		8990C56226F3EE3200BA5415 /* EventsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C56126F3EE3200BA5415 /* EventsDetails.swift */; };
 		8990C56526F3F12000BA5415 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C56426F3F12000BA5415 /* NetworkAPI.swift */; };
 		8990C56726F3F17A00BA5415 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C56626F3F17A00BA5415 /* NetworkManager.swift */; };
 		8990C56A26F3F1A800BA5415 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C56926F3F1A800BA5415 /* NetworkRouter.swift */; };
@@ -32,10 +30,13 @@
 		8990C57726F3F28C00BA5415 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C57626F3F28C00BA5415 /* ParameterEncoding.swift */; };
 		8990C57926F3F2AE00BA5415 /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C57826F3F2AE00BA5415 /* URLParameterEncoding.swift */; };
 		8990C57B26F406AB00BA5415 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990C57A26F406AB00BA5415 /* HomeViewProtocol.swift */; };
-		89CE586E26F62A6700C86A8A /* CacheData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE586D26F62A6700C86A8A /* CacheData.swift */; };
 		89CE587226F6497C00C86A8A /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE587126F6497C00C86A8A /* EventDetailsViewController.swift */; };
 		89CE587926F6820300C86A8A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE587826F6820300C86A8A /* String.swift */; };
 		89CE587B26F6820E00C86A8A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE587A26F6820E00C86A8A /* Date.swift */; };
+		89CE588626F7E66A00C86A8A /* EventTypeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE588526F7E66A00C86A8A /* EventTypeDetails.swift */; };
+		89CE588826F7F40000C86A8A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE588726F7F40000C86A8A /* RealmManager.swift */; };
+		89CE588A26F7F45500C86A8A /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE588926F7F45500C86A8A /* RealmHelper.swift */; };
+		89CE588C26F809BA00C86A8A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE588B26F809BA00C86A8A /* ReachabilityManager.swift */; };
 		89FA7AD826F3B49800E62DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FA7AD726F3B49800E62DB4 /* AppDelegate.swift */; };
 		89FA7ADC26F3B49800E62DB4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FA7ADB26F3B49800E62DB4 /* HomeViewController.swift */; };
 		89FA7ADF26F3B49800E62DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FA7ADD26F3B49800E62DB4 /* Main.storyboard */; };
@@ -76,9 +77,7 @@
 		8990C55426F3EA3600BA5415 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		8990C55826F3EA9F00BA5415 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		8990C55B26F3EB1400BA5415 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
-		8990C55D26F3ED3200BA5415 /* EventTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTypes.swift; sourceTree = "<group>"; };
 		8990C55F26F3EDFD00BA5415 /* EventDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetails.swift; sourceTree = "<group>"; };
-		8990C56126F3EE3200BA5415 /* EventsDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDetails.swift; sourceTree = "<group>"; };
 		8990C56426F3F12000BA5415 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		8990C56626F3F17A00BA5415 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8990C56926F3F1A800BA5415 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
@@ -90,10 +89,13 @@
 		8990C57626F3F28C00BA5415 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
 		8990C57826F3F2AE00BA5415 /* URLParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoding.swift; sourceTree = "<group>"; };
 		8990C57A26F406AB00BA5415 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
-		89CE586D26F62A6700C86A8A /* CacheData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheData.swift; sourceTree = "<group>"; };
 		89CE587126F6497C00C86A8A /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		89CE587826F6820300C86A8A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		89CE587A26F6820E00C86A8A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		89CE588526F7E66A00C86A8A /* EventTypeDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTypeDetails.swift; sourceTree = "<group>"; };
+		89CE588726F7F40000C86A8A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		89CE588926F7F45500C86A8A /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
+		89CE588B26F809BA00C86A8A /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		89FA7AD426F3B49800E62DB4 /* Events Arena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Events Arena.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89FA7AD726F3B49800E62DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89FA7ADB26F3B49800E62DB4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -156,8 +158,11 @@
 		8990C54526F3E4CB00BA5415 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				8990C54626F3E4E000BA5415 /* ThemeManager.swift */,
 				8990C54826F3E51800BA5415 /* AppWindowManager.swift */,
+				8990C54626F3E4E000BA5415 /* ThemeManager.swift */,
+				89CE588726F7F40000C86A8A /* RealmManager.swift */,
+				89CE588926F7F45500C86A8A /* RealmHelper.swift */,
+				89CE588B26F809BA00C86A8A /* ReachabilityManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -166,9 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				8990C55426F3EA3600BA5415 /* EventType.swift */,
-				8990C55D26F3ED3200BA5415 /* EventTypes.swift */,
 				8990C55F26F3EDFD00BA5415 /* EventDetails.swift */,
-				8990C56126F3EE3200BA5415 /* EventsDetails.swift */,
+				89CE588526F7E66A00C86A8A /* EventTypeDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,14 +264,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		89CE587C26F6876B00C86A8A /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				89CE586D26F62A6700C86A8A /* CacheData.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		89FA7ACB26F3B49800E62DB4 = {
 			isa = PBXGroup;
 			children = (
@@ -302,7 +298,6 @@
 				8990C55A26F3EB0600BA5415 /* Services */,
 				8990C56326F3F0C100BA5415 /* Networking */,
 				89CE587726F681F100C86A8A /* Extensions */,
-				89CE587C26F6876B00C86A8A /* Utils */,
 				89FA7B0926F3BF4800E62DB4 /* Resources */,
 				89FA7ADD26F3B49800E62DB4 /* Main.storyboard */,
 				89FA7AE226F3B49900E62DB4 /* LaunchScreen.storyboard */,
@@ -602,27 +597,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				89CE587926F6820300C86A8A /* String.swift in Sources */,
+				89CE588A26F7F45500C86A8A /* RealmHelper.swift in Sources */,
 				89CE587B26F6820E00C86A8A /* Date.swift in Sources */,
 				8990C56C26F3F1D900BA5415 /* NetworkLogger.swift in Sources */,
 				8990C56726F3F17A00BA5415 /* NetworkManager.swift in Sources */,
 				89CE587226F6497C00C86A8A /* EventDetailsViewController.swift in Sources */,
 				8990C55C26F3EB1400BA5415 /* HomeService.swift in Sources */,
 				8990C56526F3F12000BA5415 /* NetworkAPI.swift in Sources */,
+				89CE588C26F809BA00C86A8A /* ReachabilityManager.swift in Sources */,
 				896C2BC526F54E4D006C6C37 /* EventsTableViewCell.swift in Sources */,
 				8990C57926F3F2AE00BA5415 /* URLParameterEncoding.swift in Sources */,
 				8990C56026F3EDFD00BA5415 /* EventDetails.swift in Sources */,
 				89FA7ADC26F3B49800E62DB4 /* HomeViewController.swift in Sources */,
 				8990C56E26F3F20000BA5415 /* HTTPTask.swift in Sources */,
 				896C2BC226F54C38006C6C37 /* EventsTableView.swift in Sources */,
-				8990C55E26F3ED3200BA5415 /* EventTypes.swift in Sources */,
+				89CE588826F7F40000C86A8A /* RealmManager.swift in Sources */,
 				8990C54926F3E51800BA5415 /* AppWindowManager.swift in Sources */,
-				8990C56226F3EE3200BA5415 /* EventsDetails.swift in Sources */,
 				8990C56A26F3F1A800BA5415 /* NetworkRouter.swift in Sources */,
 				8990C57226F3F23100BA5415 /* EndpointType.swift in Sources */,
 				89FA7AD826F3B49800E62DB4 /* AppDelegate.swift in Sources */,
+				89CE588626F7E66A00C86A8A /* EventTypeDetails.swift in Sources */,
 				8990C57026F3F21A00BA5415 /* HTTPMethod.swift in Sources */,
 				8990C57B26F406AB00BA5415 /* HomeViewProtocol.swift in Sources */,
-				89CE586E26F62A6700C86A8A /* CacheData.swift in Sources */,
 				8990C57726F3F28C00BA5415 /* ParameterEncoding.swift in Sources */,
 				8990C57526F3F25400BA5415 /* JSONParameterEncoder.swift in Sources */,
 				8990C55526F3EA3700BA5415 /* EventType.swift in Sources */,

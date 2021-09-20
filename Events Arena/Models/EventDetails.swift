@@ -6,14 +6,23 @@
 //
 
 import Foundation
+import RealmSwift
+
+typealias EventsDetails = [EventDetails]
 
 // MARK: - EventDetails
-struct EventDetails: Codable {
-    let longitude, latitude, endDate, startDate: String?
-    let eventDetailDescription: String?
-    let cover: String?
-    let name, id: String?
-
+@objcMembers class EventDetails: Object, Decodable {
+    
+    dynamic var longitude, latitude, endDate, startDate: String?
+    dynamic var eventDetailDescription: String?
+    dynamic var cover: String?
+    dynamic var name: String?
+    dynamic var id: String = ""
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+    
     enum CodingKeys: String, CodingKey {
         case longitude, latitude
         case endDate = "end_date"
@@ -21,53 +30,19 @@ struct EventDetails: Codable {
         case eventDetailDescription = "description"
         case cover, name, id
     }
-}
-
-// MARK: EventDetails convenience initializers and mutators
-
-extension EventDetails {
-    init(data: Data) throws {
-        self = try JSONDecoder().decode(EventDetails.self, from: data)
+    
+    /// EventDetails convenience initializer
+    public required convenience init(from decoder: Decoder) throws {
+        self.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.longitude = try container.decode(String.self, forKey: .longitude)
+        self.latitude = try container.decode(String.self, forKey: .latitude)
+        self.endDate = try container.decode(String.self, forKey: .endDate)
+        self.startDate = try container.decode(String.self, forKey: .startDate)
+        self.eventDetailDescription = try container.decode(String.self, forKey: .eventDetailDescription)
+        self.cover = try container.decode(String.self, forKey: .cover)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.id = try container.decode(String.self, forKey: .id)
     }
-
-    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
-        guard let data = json.data(using: encoding) else {
-            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
-        }
-        try self.init(data: data)
-    }
-
-    init(fromURL url: URL) throws {
-        try self.init(data: try Data(contentsOf: url))
-    }
-
-    func with(
-        longitude: String?? = nil,
-        latitude: String?? = nil,
-        endDate: String?? = nil,
-        startDate: String?? = nil,
-        eventDetailDescription: String?? = nil,
-        cover: String?? = nil,
-        name: String?? = nil,
-        id: String?? = nil
-    ) -> EventDetails {
-        return EventDetails(
-            longitude: longitude ?? self.longitude,
-            latitude: latitude ?? self.latitude,
-            endDate: endDate ?? self.endDate,
-            startDate: startDate ?? self.startDate,
-            eventDetailDescription: eventDetailDescription ?? self.eventDetailDescription,
-            cover: cover ?? self.cover,
-            name: name ?? self.name,
-            id: id ?? self.id
-        )
-    }
-
-    func jsonData() throws -> Data {
-        return try JSONEncoder().encode(self)
-    }
-
-    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
-        return String(data: try self.jsonData(), encoding: encoding)
-    }
+    
 }

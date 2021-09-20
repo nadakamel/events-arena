@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SwiftUI
+import Network
 
 class HomeViewController: UIViewController {
     
@@ -28,7 +28,18 @@ class HomeViewController: UIViewController {
         _view.eventsTableView.dataSource = self
         _view.delegate = self
         
-        presenter.getEventTypes()
+        ReachabilityManager.isReachable { [self] networkManagerInstance in
+            print("Network is available")
+            if types.count == 0 {
+                presenter.getEventTypes()
+            }
+        }
+        ReachabilityManager.isUnreachable { [self] networkManagerInstance in
+            print("Network is Unavailable")
+            if types.isEmpty {
+                presenter.loadCachedEventTypes()
+            }
+        }
     }
     
     override func loadView() {
@@ -50,6 +61,7 @@ class HomeViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    
 }
 
 extension HomeViewController: HomeViewProtocol {
@@ -76,10 +88,19 @@ extension HomeViewController: HomeViewProtocol {
         events = []
         pageNo = 1
         for (index, _) in eventTypes.enumerated() {
-            _view.segmentedControl.insertSegment(withTitle: eventTypes[index].name, at: index, animated: false)
+            _view.segmentedControl.insertSegment(withTitle: eventTypes[index].name,
+                                                 at: index, animated: false)
             _view.segmentedControl.selectedSegmentIndex = 0
         }
-        presenter.getEventListing(eventType: types[0], page: pageNo)
+        
+        ReachabilityManager.isReachable { [self] networkManagerInstance in
+            print("Network is available")
+            presenter.getEventListing(eventType: types[0], page: pageNo)
+        }
+        ReachabilityManager.isUnreachable { [self] networkManagerInstance in
+            print("Network is Unavailable")
+            presenter.loadCachedEvents(withType: types[0])
+        }
     }
     
     func updateEvents(_ events: EventsDetails) {
@@ -93,7 +114,8 @@ extension HomeViewController: HomeViewProtocol {
     }
     
     func loadMoreEvents() {
-        presenter.getEventListing(eventType: types[_view.segmentedControl.selectedSegmentIndex], page: pageNo)
+        presenter.getEventListing(eventType: types[_view.segmentedControl.selectedSegmentIndex],
+                                  page: pageNo)
     }
     
     func navigateToEventDetails(_ event: EventDetails) {
@@ -109,6 +131,15 @@ extension HomeViewController: HomeViewDelegate {
         _view.spinner.stopAnimating()
         events = []
         pageNo = 1
-        presenter.getEventListing(eventType: types[index], page: pageNo)
+        
+        ReachabilityManager.isReachable { [self] networkManagerInstance in
+            print("Network is available")
+            presenter.getEventListing(eventType: types[index], page: pageNo)
+        }
+        ReachabilityManager.isUnreachable { [self] networkManagerInstance in
+            print("Network is Unavailable")
+            _view.refreshControl.endRefreshing()
+            presenter.loadCachedEvents(withType: types[index])
+        }
     }
 }
