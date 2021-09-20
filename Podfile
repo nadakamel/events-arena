@@ -10,6 +10,15 @@ target 'Events Arena' do
   pod 'RealmSwift'
   pod 'ReachabilitySwift'
 
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings.delete 'ARCHS'
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      end
+    end
+  end
+  
   target 'Events ArenaTests' do
     inherit! :search_paths
     # Pods for testing
