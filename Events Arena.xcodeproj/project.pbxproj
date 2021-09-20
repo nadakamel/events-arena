@@ -37,12 +37,13 @@
 		89CE588826F7F40000C86A8A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE588726F7F40000C86A8A /* RealmManager.swift */; };
 		89CE588A26F7F45500C86A8A /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE588926F7F45500C86A8A /* RealmHelper.swift */; };
 		89CE588C26F809BA00C86A8A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE588B26F809BA00C86A8A /* ReachabilityManager.swift */; };
+		89CE588E26F816D100C86A8A /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE588D26F816D100C86A8A /* HomePresenterTests.swift */; };
+		89CE589026F8ADC000C86A8A /* HomeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CE588F26F8ADC000C86A8A /* HomeServiceTests.swift */; };
 		89FA7AD826F3B49800E62DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FA7AD726F3B49800E62DB4 /* AppDelegate.swift */; };
 		89FA7ADC26F3B49800E62DB4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FA7ADB26F3B49800E62DB4 /* HomeViewController.swift */; };
 		89FA7ADF26F3B49800E62DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FA7ADD26F3B49800E62DB4 /* Main.storyboard */; };
 		89FA7AE126F3B49900E62DB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89FA7AE026F3B49900E62DB4 /* Assets.xcassets */; };
 		89FA7AE426F3B49900E62DB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FA7AE226F3B49900E62DB4 /* LaunchScreen.storyboard */; };
-		89FA7AEF26F3B49900E62DB4 /* Events_ArenaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FA7AEE26F3B49900E62DB4 /* Events_ArenaTests.swift */; };
 		89FA7AFA26F3B49900E62DB4 /* Events_ArenaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FA7AF926F3B49900E62DB4 /* Events_ArenaUITests.swift */; };
 		89FA7B0826F3BDAE00E62DB4 /* app-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 89FA7B0726F3BDAE00E62DB4 /* app-logo.png */; };
 		F29A35D68D298F0D2BC84481 /* Pods_Events_ArenaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA83AF0D358151396F088473 /* Pods_Events_ArenaTests.framework */; };
@@ -96,6 +97,8 @@
 		89CE588726F7F40000C86A8A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		89CE588926F7F45500C86A8A /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		89CE588B26F809BA00C86A8A /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		89CE588D26F816D100C86A8A /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
+		89CE588F26F8ADC000C86A8A /* HomeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServiceTests.swift; sourceTree = "<group>"; };
 		89FA7AD426F3B49800E62DB4 /* Events Arena.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Events Arena.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89FA7AD726F3B49800E62DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89FA7ADB26F3B49800E62DB4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +107,6 @@
 		89FA7AE326F3B49900E62DB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89FA7AE526F3B49900E62DB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89FA7AEA26F3B49900E62DB4 /* Events ArenaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Events ArenaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		89FA7AEE26F3B49900E62DB4 /* Events_ArenaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events_ArenaTests.swift; sourceTree = "<group>"; };
 		89FA7AF026F3B49900E62DB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89FA7AF526F3B49900E62DB4 /* Events ArenaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Events ArenaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89FA7AF926F3B49900E62DB4 /* Events_ArenaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events_ArenaUITests.swift; sourceTree = "<group>"; };
@@ -309,7 +311,8 @@
 		89FA7AED26F3B49900E62DB4 /* Events ArenaTests */ = {
 			isa = PBXGroup;
 			children = (
-				89FA7AEE26F3B49900E62DB4 /* Events_ArenaTests.swift */,
+				89CE588F26F8ADC000C86A8A /* HomeServiceTests.swift */,
+				89CE588D26F816D100C86A8A /* HomePresenterTests.swift */,
 				89FA7AF026F3B49900E62DB4 /* Info.plist */,
 			);
 			path = "Events ArenaTests";
@@ -632,7 +635,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89FA7AEF26F3B49900E62DB4 /* Events_ArenaTests.swift in Sources */,
+				89CE589026F8ADC000C86A8A /* HomeServiceTests.swift in Sources */,
+				89CE588E26F816D100C86A8A /* HomePresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
