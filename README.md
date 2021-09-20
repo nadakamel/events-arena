@@ -39,10 +39,6 @@ The presenter has no dependences to UIKit and there is a reference between View 
 
 
 ## Screenshots
-<img src="https://github.com/nadakamel/events-arena/blob/master/Screenshots/SplashScreen.png" width="300" height="649"> <img src="https://github.com/nadakamel/events-arena/blob/master/Screenshots/EventsListing.png" width="300" height="649"> 
-
-Display details of an event
-
-<img src="https://github.com/nadakamel/events-arena/blob/master/Screenshots/EventDetails.png" width="300" height="649">
+<img src="https://github.com/nadakamel/events-arena/blob/master/Screenshots/SplashScreen.png" width="300" height="649"> <img src="https://github.com/nadakamel/events-arena/blob/master/Screenshots/EventsListing.png" width="300" height="649"> <img src="https://github.com/nadakamel/events-arena/blob/master/Screenshots/EventDetails.png" width="300" height="649">
 
 
